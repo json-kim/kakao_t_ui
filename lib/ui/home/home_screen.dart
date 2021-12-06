@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:kakao_t_ui_exam/data/fake_data.dart';
 import 'package:kakao_t_ui_exam/ui/home/components/ad_view.dart';
 
+import 'components/menu_widget.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key key}) : super(key: key);
 
@@ -27,7 +29,7 @@ class HomeScreen extends StatelessWidget {
       padding: const EdgeInsets.all(20.0),
       child: ListView(
         children: [
-          ..._buildMenu(),
+          _buildMenu(),
           _buildAds(controller),
           _buildNotice(),
         ],
@@ -35,142 +37,14 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  List<Widget> _buildMenu() {
-    return [
-      Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          Column(
-            children: [
-              Image.network(
-                'https://blog.kakaocdn.net/dn/b66mQ6/btqSLGB5uFO/Jk0uW2ThNQx7HWFJjzqxnk/img.jpg',
-                width: 80,
-                height: 80,
-                fit: BoxFit.cover,
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Text(
-                '택시',
-                style: TextStyle(fontSize: 20),
-              ),
-            ],
-          ),
-          Column(
-            children: [
-              Image.network(
-                'https://blog.kakaocdn.net/dn/b66mQ6/btqSLGB5uFO/Jk0uW2ThNQx7HWFJjzqxnk/img.jpg',
-                width: 80,
-                height: 80,
-                fit: BoxFit.cover,
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Text(
-                '택시',
-                style: TextStyle(fontSize: 20),
-              ),
-            ],
-          ),
-          Column(
-            children: [
-              Image.network(
-                'https://blog.kakaocdn.net/dn/b66mQ6/btqSLGB5uFO/Jk0uW2ThNQx7HWFJjzqxnk/img.jpg',
-                width: 80,
-                height: 80,
-                fit: BoxFit.cover,
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Text(
-                '택시',
-                style: TextStyle(fontSize: 20),
-              ),
-            ],
-          ),
-          Column(
-            children: [
-              Image.network(
-                'https://blog.kakaocdn.net/dn/b66mQ6/btqSLGB5uFO/Jk0uW2ThNQx7HWFJjzqxnk/img.jpg',
-                width: 80,
-                height: 80,
-                fit: BoxFit.cover,
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Text(
-                '택시',
-                style: TextStyle(fontSize: 20),
-              ),
-            ],
-          ),
-        ],
-      ),
-      SizedBox(height: 30),
-      Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          Column(
-            children: [
-              Image.network(
-                'https://blog.kakaocdn.net/dn/b66mQ6/btqSLGB5uFO/Jk0uW2ThNQx7HWFJjzqxnk/img.jpg',
-                width: 80,
-                height: 80,
-                fit: BoxFit.cover,
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Text(
-                '택시',
-                style: TextStyle(fontSize: 20),
-              ),
-            ],
-          ),
-          Column(
-            children: [
-              Image.network(
-                'https://blog.kakaocdn.net/dn/b66mQ6/btqSLGB5uFO/Jk0uW2ThNQx7HWFJjzqxnk/img.jpg',
-                width: 80,
-                height: 80,
-                fit: BoxFit.cover,
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Text(
-                '택시',
-                style: TextStyle(fontSize: 20),
-              ),
-            ],
-          ),
-          Column(
-            children: [
-              Image.network(
-                'https://blog.kakaocdn.net/dn/b66mQ6/btqSLGB5uFO/Jk0uW2ThNQx7HWFJjzqxnk/img.jpg',
-                width: 80,
-                height: 80,
-                fit: BoxFit.cover,
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Text(
-                '택시',
-                style: TextStyle(fontSize: 20),
-              ),
-            ],
-          ),
-          Container(
-            width: 80,
-          )
-        ],
-      ),
-    ];
+  Widget _buildMenu() {
+    return GridView.count(
+      physics: NeverScrollableScrollPhysics(),
+      childAspectRatio: 5/6,
+      shrinkWrap: true,
+      crossAxisCount: 4,
+      children: fakeMenus.map((e) => MenuWidget(menu: e)).toList(),
+    );
   }
 
   Widget _buildAds(PageController controller) {
