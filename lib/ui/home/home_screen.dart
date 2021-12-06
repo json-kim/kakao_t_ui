@@ -36,79 +36,80 @@ class HomeScreen extends StatelessWidget {
   }
 
   List<Widget> _buildMenu() {
-    return [Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        Column(
-          children: [
-            Image.network(
-              'https://blog.kakaocdn.net/dn/b66mQ6/btqSLGB5uFO/Jk0uW2ThNQx7HWFJjzqxnk/img.jpg',
-              width: 80,
-              height: 80,
-              fit: BoxFit.cover,
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Text(
-              '택시',
-              style: TextStyle(fontSize: 20),
-            ),
-          ],
-        ),
-        Column(
-          children: [
-            Image.network(
-              'https://blog.kakaocdn.net/dn/b66mQ6/btqSLGB5uFO/Jk0uW2ThNQx7HWFJjzqxnk/img.jpg',
-              width: 80,
-              height: 80,
-              fit: BoxFit.cover,
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Text(
-              '택시',
-              style: TextStyle(fontSize: 20),
-            ),
-          ],
-        ),
-        Column(
-          children: [
-            Image.network(
-              'https://blog.kakaocdn.net/dn/b66mQ6/btqSLGB5uFO/Jk0uW2ThNQx7HWFJjzqxnk/img.jpg',
-              width: 80,
-              height: 80,
-              fit: BoxFit.cover,
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Text(
-              '택시',
-              style: TextStyle(fontSize: 20),
-            ),
-          ],
-        ),
-        Column(
-          children: [
-            Image.network(
-              'https://blog.kakaocdn.net/dn/b66mQ6/btqSLGB5uFO/Jk0uW2ThNQx7HWFJjzqxnk/img.jpg',
-              width: 80,
-              height: 80,
-              fit: BoxFit.cover,
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Text(
-              '택시',
-              style: TextStyle(fontSize: 20),
-            ),
-          ],
-        ),
-      ],
-    ),
+    return [
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          Column(
+            children: [
+              Image.network(
+                'https://blog.kakaocdn.net/dn/b66mQ6/btqSLGB5uFO/Jk0uW2ThNQx7HWFJjzqxnk/img.jpg',
+                width: 80,
+                height: 80,
+                fit: BoxFit.cover,
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                '택시',
+                style: TextStyle(fontSize: 20),
+              ),
+            ],
+          ),
+          Column(
+            children: [
+              Image.network(
+                'https://blog.kakaocdn.net/dn/b66mQ6/btqSLGB5uFO/Jk0uW2ThNQx7HWFJjzqxnk/img.jpg',
+                width: 80,
+                height: 80,
+                fit: BoxFit.cover,
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                '택시',
+                style: TextStyle(fontSize: 20),
+              ),
+            ],
+          ),
+          Column(
+            children: [
+              Image.network(
+                'https://blog.kakaocdn.net/dn/b66mQ6/btqSLGB5uFO/Jk0uW2ThNQx7HWFJjzqxnk/img.jpg',
+                width: 80,
+                height: 80,
+                fit: BoxFit.cover,
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                '택시',
+                style: TextStyle(fontSize: 20),
+              ),
+            ],
+          ),
+          Column(
+            children: [
+              Image.network(
+                'https://blog.kakaocdn.net/dn/b66mQ6/btqSLGB5uFO/Jk0uW2ThNQx7HWFJjzqxnk/img.jpg',
+                width: 80,
+                height: 80,
+                fit: BoxFit.cover,
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                '택시',
+                style: TextStyle(fontSize: 20),
+              ),
+            ],
+          ),
+        ],
+      ),
       SizedBox(height: 30),
       Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -168,34 +169,43 @@ class HomeScreen extends StatelessWidget {
             width: 80,
           )
         ],
-      ),];
+      ),
+    ];
   }
 
   Widget _buildAds(PageController controller) {
     return SizedBox(
-          height: 150,
-          child: PageView(
-            scrollDirection: Axis.horizontal,
-            controller: controller,
-            children: fakeAds.map((e) => AdView(ad: e)).toList(),
-            // children: <Widget>[
-            //   AdView(
-            //     ad: fakeAds[0],
-            //   ),
-            //   AdView(
-            //     ad: fakeAds[1],
-            //   ),
-            //   AdView(
-            //     ad: fakeAds[2],
-            //   ),
-            // ],
-          ),
-        );
+      height: 150,
+      child: PageView(
+        scrollDirection: Axis.horizontal,
+        controller: controller,
+        children: fakeAds.map((e) => AdView(ad: e)).toList(),
+        // children: <Widget>[
+        //   AdView(
+        //     ad: fakeAds[0],
+        //   ),
+        //   AdView(
+        //     ad: fakeAds[1],
+        //   ),
+        //   AdView(
+        //     ad: fakeAds[2],
+        //   ),
+        // ],
+      ),
+    );
   }
 
   Widget _buildNotice() {
     return Column(
-      children: List.generate(50, (idx) => Text('공지 $idx')),
+      children: List.generate(
+        50,
+        (idx) => ListTile(
+          leading: Icon(Icons.campaign_outlined),
+          title: Text('공지 $idx'),
+          trailing: Icon(Icons.navigate_next_outlined),
+          onTap: () {},
+        ),
+      ),
     );
   }
 }
