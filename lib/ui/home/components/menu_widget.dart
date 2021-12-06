@@ -21,15 +21,14 @@ class MenuWidget extends StatelessWidget {
               height: 80,
               fit: BoxFit.cover,
             ),
-            if (menu.isFavorite)
-              Positioned(
-                bottom: 0,
-                right: 0,
-                child: Icon(
-                  Icons.star,
-                  color: Colors.redAccent,
-                ),
+            Positioned(
+              bottom: 0,
+              right: 0,
+              child: Icon(
+                menu.isFavorite ? Icons.star : Icons.star_border,
+                color: Colors.redAccent,
               ),
+            ),
           ],
         ),
         Text(
