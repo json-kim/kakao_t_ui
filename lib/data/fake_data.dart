@@ -4,11 +4,19 @@ import 'package:kakao_t_ui_exam/model/menu.dart';
 
 final List<Menu> fakeMenus = List.generate(
     7,
-    (idx) => Menu(
-          title: '택시',
-          imageUrl:
-              'https://item.kakaocdn.net/do/b5d3d6a7b67fbf5afdaffb79fffbf8b1ce9463e040a07a9462a54df43e1d73f1',
-        ));
+    (idx) => idx.isOdd
+        ? Menu(
+            title: '택시',
+            imageUrl:
+                'https://item.kakaocdn.net/do/b5d3d6a7b67fbf5afdaffb79fffbf8b14022de826f725e10df604bf1b9725cfd',
+            isFavorite: true,
+          )
+        : Menu(
+            title: '버스',
+            imageUrl:
+                'https://item.kakaocdn.net/do/b5d3d6a7b67fbf5afdaffb79fffbf8b1ce9463e040a07a9462a54df43e1d73f1',
+            isFavorite: false,
+          ));
 
 final List<Ad> fakeAds = [
   Ad(

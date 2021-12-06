@@ -3,6 +3,7 @@ import 'package:kakao_t_ui_exam/model/menu.dart';
 
 class MenuWidget extends StatelessWidget {
   final Menu menu;
+
   const MenuWidget({
     this.menu,
     Key key,
@@ -12,11 +13,24 @@ class MenuWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Image.network(
-          menu.imageUrl,
-          width: 80,
-          height: 80,
-          fit: BoxFit.cover,
+        Stack(
+          children: [
+            Image.network(
+              menu.imageUrl,
+              width: 80,
+              height: 80,
+              fit: BoxFit.cover,
+            ),
+            if (menu.isFavorite)
+              Positioned(
+                bottom: 0,
+                right: 0,
+                child: Icon(
+                  Icons.star,
+                  color: Colors.redAccent,
+                ),
+              ),
+          ],
         ),
         Text(
           menu.title,
