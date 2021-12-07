@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:kakao_t_ui_exam/ui/home/home_screen.dart';
 
-
+import 'ui/home/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
