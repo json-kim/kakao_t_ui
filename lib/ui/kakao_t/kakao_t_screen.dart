@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kakao_t_ui_exam/data/fake_data.dart';
-
+import 'package:kakao_t_ui_exam/ui/kakao_t/detail_screen.dart';
 
 import 'components/ad_view.dart';
 import 'components/menu_widget.dart';
@@ -20,17 +20,17 @@ class KakaoTScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: _buildBody(),
+      body: _buildBody(context),
     );
   }
 
-  Widget _buildBody() {
+  Widget _buildBody(BuildContext context) {
     final PageController controller = PageController(initialPage: 0);
     return Padding(
       padding: const EdgeInsets.all(20.0),
       child: ListView(
         children: [
-          _buildMenu(),
+          _buildMenu(context),
           _buildAds(controller),
           _buildNotice(),
         ],
@@ -38,13 +38,28 @@ class KakaoTScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildMenu() {
+  Widget _buildMenu(BuildContext context) {
     return GridView.count(
       physics: NeverScrollableScrollPhysics(),
-      childAspectRatio: 5/6,
+      childAspectRatio: 5 / 6,
       shrinkWrap: true,
       crossAxisCount: 4,
-      children: fakeMenus.map((e) => MenuWidget(menu: e)).toList(),
+      children: fakeMenus
+          .map(
+            (menu) => GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        DetailScreen(title: menu.title, imgUrl: menu.imageUrl),
+                  ),
+                );
+              },
+              child: MenuWidget(menu: menu),
+            ),
+          )
+          .toList(),
     );
   }
 
@@ -55,17 +70,6 @@ class KakaoTScreen extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         controller: controller,
         children: fakeAds.map((e) => AdView(ad: e)).toList(),
-        // children: <Widget>[
-        //   AdView(
-        //     ad: fakeAds[0],
-        //   ),
-        //   AdView(
-        //     ad: fakeAds[1],
-        //   ),
-        //   AdView(
-        //     ad: fakeAds[2],
-        //   ),
-        // ],
       ),
     );
   }
