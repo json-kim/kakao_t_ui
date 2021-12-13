@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:kakao_t_ui_exam/data/fake_data.dart';
 import 'package:kakao_t_ui_exam/ui/kakao_t/detail_screen.dart';
@@ -5,8 +6,15 @@ import 'package:kakao_t_ui_exam/ui/kakao_t/detail_screen.dart';
 import 'components/ad_view.dart';
 import 'components/menu_widget.dart';
 
-class KakaoTScreen extends StatelessWidget {
+class KakaoTScreen extends StatefulWidget {
   const KakaoTScreen({Key key}) : super(key: key);
+
+  @override
+  State<KakaoTScreen> createState() => _KakaoTScreenState();
+}
+
+class _KakaoTScreenState extends State<KakaoTScreen> {
+  int _index = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +39,7 @@ class KakaoTScreen extends StatelessWidget {
       child: ListView(
         children: [
           _buildMenu(context),
-          _buildAds(controller),
+          _buildAds(controller, context),
           _buildNotice(),
         ],
       ),
@@ -51,8 +59,7 @@ class KakaoTScreen extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) =>
-                        DetailScreen(title: menu.title, imgUrl: menu.imageUrl),
+                    builder: (context) => DetailScreen(menu: menu),
                   ),
                 );
               },
@@ -63,14 +70,47 @@ class KakaoTScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildAds(PageController controller) {
-    return SizedBox(
-      height: 150,
-      child: PageView(
-        scrollDirection: Axis.horizontal,
-        controller: controller,
-        children: fakeAds.map((e) => AdView(ad: e)).toList(),
-      ),
+  Widget _buildAds(PageController controller, BuildContext context) {
+    return Stack(
+      alignment: Alignment.bottomCenter,
+      children: [
+        CarouselSlider(
+          options: CarouselOptions(
+            initialPage: _index,
+            autoPlay: true,
+            aspectRatio: 2,
+            viewportFraction: 1,
+            onPageChanged: (idx, _) {
+              setState(() {
+                _index = idx;
+              });
+            },
+          ),
+          items: fakeAds.map((e) => AdView(ad: e)).toList(),
+        ),
+        Positioned(
+          left: 0,
+          bottom: 8,
+          right: 0,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: fakeAds.asMap().entries.map((entry) {
+              return GestureDetector(
+                onTap: () => controller.animateToPage(entry.key),
+                child: Container(
+                  width: 12.0,
+                  height: 12.0,
+                  margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: entry.key == _index ? Colors.black : Colors.white,
+                  ),
+                ),
+              );
+            }).toList(),
+          ),
+        ),
+      ],
     );
   }
 

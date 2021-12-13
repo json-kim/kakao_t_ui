@@ -15,11 +15,14 @@ class MenuWidget extends StatelessWidget {
       children: [
         Stack(
           children: [
-            Image.network(
-              menu.imageUrl,
-              width: 80,
-              height: 80,
-              fit: BoxFit.cover,
+            Hero(
+              tag: menu.imageUrl,
+              child: Image.network(
+                menu.imageUrl,
+                width: 80,
+                height: 80,
+                fit: BoxFit.cover,
+              ),
             ),
             Positioned(
               bottom: 0,
