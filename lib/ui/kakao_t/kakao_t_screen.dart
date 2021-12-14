@@ -21,7 +21,7 @@ class _KakaoTScreenState extends State<KakaoTScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: Text(
+        title: const Text(
           '카카오 T',
           style: TextStyle(
             color: Colors.black,
@@ -48,7 +48,7 @@ class _KakaoTScreenState extends State<KakaoTScreen> {
 
   Widget _buildMenu(BuildContext context) {
     return GridView.count(
-      physics: NeverScrollableScrollPhysics(),
+      physics: const NeverScrollableScrollPhysics(),
       childAspectRatio: 5 / 6,
       shrinkWrap: true,
       crossAxisCount: 4,
@@ -99,12 +99,13 @@ class _KakaoTScreenState extends State<KakaoTScreen> {
                 onTap: () => controller.animateToPage(
                   entry.key,
                   curve: Curves.easeIn,
-                  duration: Duration(milliseconds: 100),
+                  duration: const Duration(milliseconds: 100),
                 ),
                 child: Container(
                   width: 12.0,
                   height: 12.0,
-                  margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
+                  margin: const EdgeInsets.symmetric(
+                      vertical: 8.0, horizontal: 4.0),
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: entry.key == _index ? Colors.black : Colors.white,
@@ -123,9 +124,9 @@ class _KakaoTScreenState extends State<KakaoTScreen> {
       children: List.generate(
         50,
         (idx) => ListTile(
-          leading: Icon(Icons.campaign_outlined),
+          leading: const Icon(Icons.campaign_outlined),
           title: Text('공지 $idx'),
-          trailing: Icon(Icons.navigate_next_outlined),
+          trailing: const Icon(Icons.navigate_next_outlined),
           onTap: () {},
         ),
       ),

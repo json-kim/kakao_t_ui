@@ -17,7 +17,7 @@ class _BmiCalcHomeScreenState extends State<BmiCalcHomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('BMI 계산하기'),
+        title: const Text('BMI 계산하기'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -26,7 +26,7 @@ class _BmiCalcHomeScreenState extends State<BmiCalcHomeScreen> {
           child: Column(
             children: [
               TextFormField(
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: '몸무게 (kg)',
                   hintText: 'ex: 70',
                   border: OutlineInputBorder(),
@@ -44,9 +44,9 @@ class _BmiCalcHomeScreenState extends State<BmiCalcHomeScreen> {
                   _weight = double.parse(input!.trim());
                 },
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               TextFormField(
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: '키 (cm)',
                   hintText: 'ex: 170',
                   border: OutlineInputBorder(),
@@ -84,7 +84,7 @@ class _BmiCalcHomeScreenState extends State<BmiCalcHomeScreen> {
                         ),
                       );
                     },
-                    child: Text('계산하기'),
+                    child: const Text('계산하기'),
                   ),
                 ],
               )
@@ -93,6 +93,5 @@ class _BmiCalcHomeScreenState extends State<BmiCalcHomeScreen> {
         ),
       ),
     );
-    ;
   }
 }

@@ -25,7 +25,8 @@ class AdView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(ad.title,
-                      style: TextStyle(fontSize: 20, color: Colors.white)),
+                      style:
+                          const TextStyle(fontSize: 20, color: Colors.white)),
                   Text(ad.text),
                 ],
               ),

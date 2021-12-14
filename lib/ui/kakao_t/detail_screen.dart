@@ -4,7 +4,7 @@ import 'package:kakao_t_ui_exam/model/menu.dart';
 class DetailScreen extends StatefulWidget {
   final Menu menu;
 
-  DetailScreen({Key? key, required this.menu}) : super(key: key);
+  const DetailScreen({Key? key, required this.menu}) : super(key: key);
 
   @override
   State<DetailScreen> createState() => _DetailScreenState();
@@ -20,14 +20,13 @@ class _DetailScreenState extends State<DetailScreen> {
         title: Text(widget.menu.title),
       ),
       body: Container(
-        constraints: BoxConstraints(
+        constraints: const BoxConstraints(
           minHeight: 100,
           minWidth: 100,
         ),
         alignment: Alignment.center,
         child: GestureDetector(
             onScaleUpdate: (val) {
-              print(val.scale);
               setState(() {
                 scale = 1 / val.scale;
               });
