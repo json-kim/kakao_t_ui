@@ -5,8 +5,8 @@ class MenuWidget extends StatelessWidget {
   final Menu menu;
 
   const MenuWidget({
-    this.menu,
-    Key key,
+    required this.menu,
+    Key? key,
   }) : super(key: key);
 
   @override

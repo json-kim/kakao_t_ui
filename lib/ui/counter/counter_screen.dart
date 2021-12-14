@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CounterScreen extends StatefulWidget {
-  const CounterScreen({Key key}) : super(key: key);
+  const CounterScreen({Key? key}) : super(key: key);
 
   @override
   State<CounterScreen> createState() => _CounterScreenState();
@@ -20,7 +20,7 @@ class _CounterScreenState extends State<CounterScreen> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {
-          setState((){
+          setState(() {
             _count++;
           });
         },

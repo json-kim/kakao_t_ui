@@ -4,7 +4,7 @@ import 'package:kakao_t_ui_exam/model/menu.dart';
 class DetailScreen extends StatefulWidget {
   final Menu menu;
 
-  DetailScreen({Key key, this.menu}) : super(key: key);
+  DetailScreen({Key? key, required this.menu}) : super(key: key);
 
   @override
   State<DetailScreen> createState() => _DetailScreenState();

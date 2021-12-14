@@ -4,7 +4,8 @@ class BmiCalcResultScreen extends StatelessWidget {
   final double weight;
   final double height;
 
-  const BmiCalcResultScreen({this.weight, this.height, Key key})
+  const BmiCalcResultScreen(
+      {required this.weight, required this.height, Key? key})
       : super(key: key);
 
   double getBmi(double w, double h) {
@@ -61,6 +62,5 @@ class BmiCalcResultScreen extends StatelessWidget {
         ),
       ),
     );
-    ;
   }
 }

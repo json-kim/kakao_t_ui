@@ -4,7 +4,7 @@ import 'package:kakao_t_ui_exam/model/ad.dart';
 class AdView extends StatelessWidget {
   final Ad ad;
 
-  const AdView({this.ad, Key key}) : super(key: key);
+  const AdView({required this.ad, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,8 @@ class AdView extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(ad.title, style: TextStyle(fontSize: 20, color: Colors.white)),
+                  Text(ad.title,
+                      style: TextStyle(fontSize: 20, color: Colors.white)),
                   Text(ad.text),
                 ],
               ),
